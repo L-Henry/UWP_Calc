@@ -1,0 +1,132 @@
+﻿<Page
+    x:Class="UWP_Calc.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWP_Calc"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="13*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <ComboBox x:Name="comboBox" Grid.Row="0">
+                <ComboBoxItem>Klassiek</ComboBoxItem>
+                <ComboBoxItem>Parser</ComboBoxItem>
+            </ComboBox>
+            <TextBox Grid.Row="1" x:Name="textBox2" PlaceholderText="0" Text="{x:Bind Calc.Display2Value, Mode=TwoWay}"></TextBox>
+            <TextBox Grid.Row="2" x:Name="textBox1" PlaceholderText="0" Text="{x:Bind Calc.DisplayValue, Mode=TwoWay}"></TextBox>
+
+
+            <Grid x:Name="moduloButton" Grid.Row="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="moduleButton" Background="DarkGray"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="0" Grid.Row="0" >%</Button>
+                <Button x:Name="sqrtButton" Background="DarkGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="1" Grid.Row="0" >Sqrt</Button>
+                <Button x:Name="kwadraatButton" Background="DarkGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="2" Grid.Row="0" >X²</Button>
+                <Button x:Name="invertButton" Background="DarkGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="4" Grid.Row="0">1/x</Button>
+
+                <Button x:Name="ceButton" Background="DarkGray"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="0" Grid.Row="1" Command="{x:Bind Calc.ClearNumbersCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource self}}">CE</Button>
+                <Button x:Name="cButton" Background="DarkGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="1" Grid.Row="1" Command="{x:Bind Calc.ClearNumbersCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource self}}">C</Button>
+                <Button x:Name="delButton" Content="&lt;--" Background="DarkGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="2" Grid.Row="1" Command="{x:Bind Calc.ClearNumbersCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource self}}"/>
+                        
+                <Button x:Name="deelButton" Background="DarkGray"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="3" Grid.Row="1" Command="{x:Bind Calc.AddOperatorCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource self}}">/</Button>
+                <Button x:Name="maalButton" Background="DarkGray"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="3" Grid.Row="2" Command="{x:Bind Calc.AddOperatorCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource self}}">X</Button>
+                <Button x:Name="minButton" Background="DarkGray"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="3" Grid.Row="3" Command="{x:Bind Calc.AddOperatorCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource self}}">-</Button>
+                <Button x:Name="plusButton" Background="DarkGray"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="3" Grid.Row="4" Command="{x:Bind Calc.AddOperatorCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource self}}">+</Button>
+
+                <Button x:Name="_0Button" Background="LightGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="1" Grid.Row="5" Command="{x:Bind Calc.AddNumberCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource self}}" >0</Button>
+                <Button x:Name="_1Button" Background="LightGray"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="0" Grid.Row="4" Command="{x:Bind Calc.AddNumberCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource self}}">1</Button>
+                <Button x:Name="_2Button" Background="LightGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="1" Grid.Row="4" Command="{x:Bind Calc.AddNumberCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource self}}">2</Button>
+                <Button x:Name="_3Button" Background="LightGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="2" Grid.Row="4" Command="{x:Bind Calc.AddNumberCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource self}}">3</Button>
+                <Button x:Name="_4Button" Background="LightGray"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="0" Grid.Row="3" Command="{x:Bind Calc.AddNumberCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource self}}">4</Button>
+                <Button x:Name="_5Button" Background="LightGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="1" Grid.Row="3" Command="{x:Bind Calc.AddNumberCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource self}}">5</Button>
+                <Button x:Name="_6Button" Background="LightGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="2" Grid.Row="3" Command="{x:Bind Calc.AddNumberCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource self}}">6</Button>
+                <Button x:Name="_7Button" Background="LightGray"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="0" Grid.Row="2" Command="{x:Bind Calc.AddNumberCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource self}}">7</Button>
+                <Button x:Name="_8Button" Background="LightGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="1" Grid.Row="2" Command="{x:Bind Calc.AddNumberCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource self}}">8</Button>
+                <Button x:Name="_9Button" Background="LightGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="2" Grid.Row="2" Command="{x:Bind Calc.AddNumberCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource self}}">9</Button>
+
+                <Button x:Name="negateButton" Background="DarkGray"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="0" Grid.Row="5" >+-</Button>
+                <Button x:Name="commaButton" Background="DarkGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="2" Grid.Row="5" >,</Button>
+                           
+                <Button x:Name="isButton" Background="DarkGray"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Grid.Column="3" Grid.Row="5" Command="{x:Bind Calc.SolveCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource self}}">=</Button>
+            </Grid>
+
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="25*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="clearHistoryButton" HorizontalAlignment="Stretch"  Grid.Row="0" VerticalAlignment="Stretch" >Clear history
+            </Button>
+            <ListView Grid.Row="1" x:Name="listView" ItemsSource="{x:Bind Calc.History, Mode=OneWay}" SelectedItem="{x:Bind Calc.SelectedCalc, Mode=OneWay}" >
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="local:HistoryViewModel">
+                        <StackPanel>
+                            <TextBlock Text="{x:Bind Opgave, Mode=OneWay}"></TextBlock>
+                            <TextBlock Text="{x:Bind Result, Mode=OneWay}"></TextBlock>
+                        </StackPanel>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+                
+            </ListView>
+        </Grid>
+
+
+    </Grid>
+</Page>
